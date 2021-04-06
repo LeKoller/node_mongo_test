@@ -14,7 +14,7 @@ const {
 router.post("/register", stateValidations(), validate, create);
 router.get("/list", list);
 router.get("/get/", retrieve);
-router.patch("/edit/:id", update);
+router.put("/edit/:id", stateValidations(), validate, update);
 router.delete("/delete/:id", destroy);
 
 module.exports = (app) => app.use("/states", router);

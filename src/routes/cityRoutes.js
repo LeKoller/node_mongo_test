@@ -1,7 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const { create } = require("../controllers/cityController");
+const {
+  create,
+  list,
+  retrieve,
+  update,
+} = require("../controllers/cityController");
 const {
   cityValidations,
   stateIdValidation,
@@ -15,9 +20,9 @@ router.post(
   stateIdValidation,
   create
 );
-// router.get("/list", list);
-// router.get("/get/", retrieve);
-// router.patch("/edit/:id", update);
+router.get("/list", list);
+router.get("/get/", retrieve);
+router.put("/edit/:id", cityValidations(), validate, stateIdValidation, update);
 // router.delete("/delete/:id", destroy);
 
 module.exports = (app) => app.use("/cities", router);

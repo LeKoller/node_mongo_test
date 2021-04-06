@@ -23,27 +23,31 @@ exports.list = async (req, res) => {
     res.status(200).send({ states });
   } catch (err) {
     console.log(err);
-    res.status(400).send({ error: "State listing failed." });
+    res.status(400).send({ error: "States listing failed." });
   }
 };
 
 exports.retrieve = async (req, res) => {
-  try {
-    let state = {};
+  let state = null;
 
+  try {
     if (req.query.abbreviation) {
       state = await State.findOne({ abbreviation: req.query.abbreviation });
     } else if (req.query.name) {
       state = await State.findOne({ name: req.query.name });
+    } else if (req.query.id) {
+      state = await State.findById(req.query.id);
     } else {
       return res.status(400).send({
-        error: "Query parameters 'name' or 'abbreviation' are required.",
+        error: "Query parameters 'abbreviation', 'name' or 'id' are required.",
       });
     }
 
+    if (state === null)
+      return res.status(404).send({ error: "State not found." });
+
     res.status(200).send({ state });
-  } catch (err) {
-    console.log(err);
+  } catch {
     res.status(404).send({ error: "State not found." });
   }
 };

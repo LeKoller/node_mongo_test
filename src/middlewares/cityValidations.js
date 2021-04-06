@@ -17,7 +17,7 @@ module.exports.stateIdValidation = async (req, res, next) => {
     return next();
   } catch {
     res.status(400).send({
-      error: "Invalid stateId. No state found with provided credentials.",
+      error: "Invalid stateId. No state found with provided credential.",
     });
   }
 };
