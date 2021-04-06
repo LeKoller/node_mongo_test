@@ -1,5 +1,5 @@
 const express = require("express");
-const PORT = 3000;
+const PORT = 4000;
 
 const app = express();
 
@@ -10,6 +10,6 @@ app.get("/", (req, res) => {
   res.send("OK");
 });
 
-require("./controllers/stateController")(app);
+require("./routes/stateRoutes")(app);
 
 app.listen(PORT);

@@ -1,19 +1,11 @@
 const mongoose = require("../database");
 const Schema = mongoose.Schema;
 
-const StateSchema = new Schema(
+const CitySchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
-      unique: true,
-    },
-    abbreviation: {
-      type: String,
-      unique: true,
-      required: true,
-      uppercase: true,
-      maxLength: 2,
+      require: true,
     },
     createdAt: {
       type: Date,
@@ -23,10 +15,14 @@ const StateSchema = new Schema(
       type: Date,
       default: Date.now(),
     },
+    stateId: {
+      ref: "State",
+      type: mongoose.Schema.Types.ObjectId,
+    },
   },
   { versionKey: false }
 );
 
-const State = mongoose.model("State", StateSchema);
+const City = mongoose.model("City", CitySchema);
 
-module.exports = State;
+module.exports = City;
