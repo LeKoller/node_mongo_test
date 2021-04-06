@@ -5,7 +5,8 @@ const CitySchema = new Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true,
+      unique: true,
     },
     createdAt: {
       type: Date,
@@ -18,6 +19,7 @@ const CitySchema = new Schema(
     stateId: {
       ref: "State",
       type: mongoose.Schema.Types.ObjectId,
+      required: true,
     },
   },
   { versionKey: false }

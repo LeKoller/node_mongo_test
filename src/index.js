@@ -11,5 +11,6 @@ app.get("/", (req, res) => {
 });
 
 require("./routes/stateRoutes")(app);
+require("./routes/cityRoutes")(app);
 
 app.listen(PORT);

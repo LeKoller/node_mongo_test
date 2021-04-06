@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { stateValidations, validate } = require("../middlewares");
+
 const {
   create,
   list,
@@ -9,7 +11,7 @@ const {
   destroy,
 } = require("../controllers/stateController");
 
-router.post("/register", create);
+router.post("/register", stateValidations(), validate, create);
 router.get("/list", list);
 router.get("/get/", retrieve);
 router.patch("/edit/:id", update);
