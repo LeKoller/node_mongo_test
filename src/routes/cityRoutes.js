@@ -6,6 +6,7 @@ const {
   list,
   retrieve,
   update,
+  destroy,
 } = require("../controllers/cityController");
 const {
   cityValidations,
@@ -23,6 +24,6 @@ router.post(
 router.get("/list", list);
 router.get("/get/", retrieve);
 router.put("/edit/:id", cityValidations(), validate, stateIdValidation, update);
-// router.delete("/delete/:id", destroy);
+router.delete("/delete/:id", destroy);
 
 module.exports = (app) => app.use("/cities", router);
