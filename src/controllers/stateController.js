@@ -1,4 +1,5 @@
 const State = require("../models/state");
+const City = require("../models/city");
 
 exports.create = async (req, res) => {
   const { abbreviation } = req.body;
@@ -68,6 +69,8 @@ exports.update = async (req, res) => {
 
 exports.destroy = async (req, res) => {
   try {
+    City.deleteMany({ stateId: req.params.id });
+
     const state = await State.findByIdAndDelete(req.params.id);
 
     res.status(200).send({ deleted: state });
