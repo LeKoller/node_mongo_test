@@ -1,3 +1,4 @@
+const datetime = require("../utils/datetime");
 const mongoose = require("../database");
 const Schema = mongoose.Schema;
 
@@ -17,11 +18,11 @@ const StateSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now(),
+      default: datetime,
     },
     updatedAt: {
       type: Date,
-      default: Date.now(),
+      default: datetime,
     },
   },
   { versionKey: false }

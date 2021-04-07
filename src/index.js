@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const setTZ = require("set-tz");
+setTZ("UTC");
 
 const port = process.env.PORT || 4000;
 

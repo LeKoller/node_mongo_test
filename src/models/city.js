@@ -1,3 +1,4 @@
+const datetime = require("../utils/datetime");
 const mongoose = require("../database");
 const Schema = mongoose.Schema;
 
@@ -10,11 +11,11 @@ const CitySchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now(),
+      default: datetime,
     },
     updatedAt: {
       type: Date,
-      default: Date.now(),
+      default: datetime,
     },
     stateId: {
       ref: "State",

@@ -1,5 +1,6 @@
 const State = require("../models/state");
 const City = require("../models/city");
+const datetime = require("../utils/datetime");
 
 exports.create = async (req, res) => {
   const { abbreviation } = req.body;
@@ -58,7 +59,7 @@ exports.update = async (req, res) => {
     const state = await State.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    state.updatedAt = Date.now();
+    state.updatedAt = datetime;
 
     res.status(202).send({ state });
   } catch (err) {
